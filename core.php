@@ -18,7 +18,9 @@ echo "
 
 <form action="test.php" method="post">
 Name: <input type="text" name="name"><br>
-EPS File: <input type="file" name="design"><br>
+EPS File: <input type="file" name="design"<br>
+Item color: <input type="text" name="color">
+<br>
 <input type="submit">
 </form>
 
