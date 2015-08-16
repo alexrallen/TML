@@ -1,5 +1,6 @@
 #!/usr/bin/python
  
+import Image
 import cairo
 import rsvg
 from sys import argv
@@ -8,6 +9,7 @@ import getopt
 
 file = "something.svg"
 output = "output.png"
+color = "red"
 height = 400
 width = 400
 
@@ -54,5 +56,14 @@ try:
     svg.render_cairo (cr)
  
     surface.write_to_png (output)
+    
+    background = Image.open("shirt_%s.png" % color)
+    overlay = Image.open(output)
+
+    background = background.convert("RGBA")
+    overlay = overlay.convert("RGBA")
+
+    new_img = Image.blend(background, overlay, 0.5)
+    new_img.save(output + "_final","PNG")
 except:
     print "failure"
