@@ -19,8 +19,10 @@ echo "
 <form action="test.php" method="post">
 Name: <input type="text" name="name"><br>
 EPS File: <input type="file" name="design"<br>
-Item color: <input type="text" name="color">
-<br>
+Item color: <input type="text" name="color"><br>
+Enabled? (not recomended): <input type="text" name="enabled"><br>
+Distance from top: <input type="text" name="location"><br>
+Size of eps: <input type="text" name="size"><br>
 <input type="submit">
 </form>
 
