@@ -3,6 +3,16 @@ import MySQLdb
 db = MySQLdb.connect("localhost","root","","opencart" )
 import random
 
+with open('data.txt') as f:
+    dat = []
+    while True:
+        line = list(islice(f, 10)) 
+        if line:                     
+            lines.append(line)       # may be store it 
+        else:
+            break
+    print lines    
+
 cursor = db.cursor()
 
 oc_product = ("INSERT INTO oc_product "
