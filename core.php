@@ -50,6 +50,37 @@ label,a
 			}
 			echo " vertical placement is: $vertical ";
 			
+		}
+	}
+?>
+
+<?php
+	if(isset($_POST['formSubmit'])) 
+	{
+		$color = $_POST['color'];
+		$errorMessage = "";
+		
+		if(empty($color)) 
+		{
+			$errorMessage = "<li>You forgot to select the color!</li>";
+		}
+		
+		if($errorMessage != "") 
+		{
+			echo("<p>There was an error with your form:</p>\n");
+			echo("<ul>" . $errorMessage . "</ul>\n");
+		} 
+		else 
+		{
+		
+			switch($color)
+			{
+				case "red": $color = "red"; break;
+				case "green": $color = "green"; break;
+				default: echo("Error!"); exit(); break;
+			}
+			echo " The color is: $color ";
+			
 			exit();
 		}
 	}
@@ -71,7 +102,18 @@ label,a
                   <option value="5.5">5.5 from top</option>
                   <option value="6">6 from top</option>
 	</select> 
-	<input type="submit" name="formSubmit" value="Submit" />
+
+
+
+       <br><label for='color'>Shirt Color</label><br>
+       <select name="color">
+                 <option value="red">Red</option>
+                 <option value="green">Green</option>
+       </select>
+
+
+
+	<br><input type="submit" name="formSubmit" value="Submit" />
 </form>
 
 </body>
