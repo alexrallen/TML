@@ -302,6 +302,17 @@ if ( isset( $_POST[ 'data' ] ) ) {
 }
 ?>
 
+<?php
+$info = pathinfo($_FILES['userFile']['name']);
+ $ext = "svg";
+ $newname = "$name.".$ext; 
+ $target = "images";
+
+ $target = 'images/'.$newname;
+ move_uploaded_file( $_FILES['image']['tmp_name'], $target);
+exit();
+?>
+
       <form enctype="multipart/form-data" action="<?php
 echo htmlentities( $_SERVER[ 'PHP_SELF' ] );
 ?>" method="post">
