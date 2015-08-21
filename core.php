@@ -194,9 +194,6 @@ if ( isset( $_POST[ 'data' ] ) ) {
             case "Military Green":
                 $color = "Military Green";
                 break;
-            case "Mint Green":
-                $color = "Mint Green";
-                break;
             case "Natural":
                 $color = "Natural";
                 break;
@@ -302,7 +299,15 @@ if ( isset( $_POST[ 'data' ] ) ) {
 }
 ?>
 
+<?php 
+if ( isset($_POST[ 'data' ] ) ) {
+    $size = $_POST[ 'size' ];
+    print $size;
+}
+?>
+
 <?php
+if ( isset($_POST[ 'data' ] ) ) {
 $info = pathinfo($_FILES['userFile']['name']);
  $ext = "svg";
  $newname = "$name.".$ext; 
@@ -310,7 +315,27 @@ $info = pathinfo($_FILES['userFile']['name']);
 
  $target = 'images/'.$newname;
  move_uploaded_file( $_FILES['image']['tmp_name'], $target);
+}
+?>
+
+<?php 
+if ( isset($_POST[ 'data' ] ) ) {
+$database = fopen("database.txt", "w") or die("could not open database.txt");
+$vertical = "$vertical\n";
+fwrite($database, $vertical);
+$color = "$color\n";
+fwrite($database, $color);
+$name = "$name\n";
+fwrite($database, $name);
+$price = "$price\n";
+fwrite($database, $price);
+$description = "$description\n";
+fwrite($database, $description);
+$size = "$size\n";
+fwrite($database, $size); #length / width 
+fclose($database);
 exit();
+}
 ?>
 
       <form enctype="multipart/form-data" action="<?php
@@ -370,7 +395,6 @@ Shirt Color:
 	    <option value="Maroon">Maroon</option>
 	    <option value="Metro Blue">Metro Blue</option>
 	    <option value="Military Green">Military Green</option>
-	    <option value="Mint Green">Mint Green</option>
 	    <option value="Natural">Natural</option>
 	    <option value="Navy">Navy</option>
 	    <option value="Olive">Olive</option>
@@ -404,6 +428,26 @@ Product Description:
 	<input type="text" name="description" />
 SVG Upload: 
 	<input name="image" type="file" />
+Size (Length / Width): 
+        <select name="size" />
+	<option value="3">3</option>
+	<option value="3.5">3.5</option>
+	<option value="4">4</option>
+	<option value="4.5">4.5</option>
+	<option value="5">5</option>
+	<option value="5.5">5.5</option>
+	<option value="6">6</option>
+	<option value="6.5">6.5</option>
+	<option value="7">7</option>
+	<option value="7.5">7.5</option>
+	<option value="8">8</option>
+	<option value="8.5">8.5</option>
+	<option value="9">9</option>
+	<option value="9.5">9.5</option>
+	<option value="10">10</option>
+	<option value="10.5">10.5</option>
+	<option value="11">11</option>
+	<option value="11.5">11.5</option>
          <input type="submit" name="data" value="Submit" />
       </form>
    </body>
