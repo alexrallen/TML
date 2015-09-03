@@ -2,6 +2,11 @@ import MySQLdb
 
 db = MySQLdb.connect("localhost","root","","opencart" )
 
+#need to define these variables....
+stype = "gildan-ultra-cotton-t-shirt"
+color = "Black"
+desid = "55a03015c4bdad6330c430c1"
+
 with open('data.txt') as f:
     dat = []
     while True:
@@ -52,4 +57,22 @@ oc_product_description = ("INSERT INTO oc_product_desription "
 data_oc_product = (id, 1, (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (1000), (5), (image), (0), (1), (price), (0), (0), ("2015-06-26"), (NULL), (NULL), (0.00000000), (0.00000000), (0.00000000), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL)) 
 
 cursor.execute(oc_product, data_oc_product)
+
+#Add Metadata
+
+oc_attrb = ("INSERT INTO oc_product_attribute "
+		"(product_id, attribute_id, language_id, text) "
+		"VALUES (%s, %s, %s, %s)")
+
+data_oc_attrb_shirt = (id, 13, 1, (stype))
+data_oc_attrb_color = (id, 12, 1, (color))
+data_oc_attrb_design = (id, 14, 1, (desid))
+
+cursor.execute(oc_attrb, data_oc_attrb_color)
+cursor.execute(oc_attrb, data_oc_attrb_shirt)
+cursor.execute(oc_attrb, data_oc_attrb_design)
+
+#Add Sizes
+
+
 
