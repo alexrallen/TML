@@ -1,11 +1,17 @@
 import MySQLdb
 
-db = MySQLdb.connect("localhost","root","", "opencart" )
+db = MySQLdb.connect("localhost","root","Rnwa_55_33", "opencart" )
 
 #need to define these variables....
 stype = "gildan-ultra-cotton-t-shirt"
 color = "Black"
 desid = "55a03015c4bdad6330c430c1"
+
+meta_description = "meta_description" 
+metatitle = "product"
+meta_keyword = "product"
+description = "product description"
+tag = "product"
 
 #with open('data.txt') as f:
  #   dat = []
@@ -19,7 +25,7 @@ desid = "55a03015c4bdad6330c430c1"
 
 NULL = "" #shouldn't this be obvious? 
 
-name = "cOOl Product"
+name = "1cOOl Product"
 name = name.replace(" ", "")
 name = name.lower()
 image = "catalog/" + str(name) + str(".png")
@@ -74,15 +80,13 @@ data_oc_product = (id, 1, \
 (0), (1),\
 (price), (0), \
 (0), ("2015-06-26"), \
-(NULL), (NULL), \
+(0), (1), \
 (0.00000000), (0.00000000), \
-(0.00000000), (NULL),\
-(NULL), (NULL),\
-(NULL), (NULL),\
-(NULL), (NULL),\
-(NULL))
-
-cursor.execute(oc_product, data_oc_product)
+(0.00000000), (1),\
+(0), (1),\
+(1), (1),\
+(0), ("2015-07-10 20:47:30"),\
+("2015-07-10 20:47:30"))
 
 #Add Metadata
 
@@ -90,17 +94,21 @@ oc_attrb = ("INSERT INTO oc_product_attribute "
 		"(product_id, attribute_id, language_id, text) "
 		"VALUES (%s, %s, %s, %s)")
 		
-oc_product_description = ("INSERT INTO oc_product_desription "
-                             "(product_id, language_id, name, description, ) "
+oc_product_description = ("INSERT INTO oc_product_description "
+                             "(product_id, language_id, name, description, tag, meta_title, meta_description, meta_keyword)"
 "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+
+data_oc_product_description = (id, 1, name, description, tag, metatitle, meta_description, meta_keyword)
 
 data_oc_attrb_shirt = (id, 13, 1, (stype))
 data_oc_attrb_color = (id, 12, 1, (color))
 data_oc_attrb_design = (id, 14, 1, (desid))
 
+cursor.execute(oc_product, data_oc_product)
 cursor.execute(oc_attrb, data_oc_attrb_color)
 cursor.execute(oc_attrb, data_oc_attrb_shirt)
 cursor.execute(oc_attrb, data_oc_attrb_design)
+cursor.execute(oc_product_description, data_oc_product_description)
 
 #Add Sizes
 
