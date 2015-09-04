@@ -65,10 +65,6 @@ date_modified)"
 
                  "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-oc_product_description = ("INSERT INTO oc_product_desription "
-                             "() "
-                             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
-
 data_oc_product = (id, 1, \
 (NULL), (NULL),\
 (NULL), (NULL),\
@@ -93,6 +89,10 @@ cursor.execute(oc_product, data_oc_product)
 oc_attrb = ("INSERT INTO oc_product_attribute "
 		"(product_id, attribute_id, language_id, text) "
 		"VALUES (%s, %s, %s, %s)")
+		
+oc_product_description = ("INSERT INTO oc_product_desription "
+                             "(product_id, language_id, name, description, ) "
+"VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
 data_oc_attrb_shirt = (id, 13, 1, (stype))
 data_oc_attrb_color = (id, 12, 1, (color))
