@@ -1,6 +1,6 @@
 import MySQLdb
 
-db = MySQLdb.connect("localhost","root","Rnwa_55_33", "opencart" )
+db = MySQLdb.connect("localhost","root","", "opencart" )
 
 #need to define these variables....
 stype = "gildan-ultra-cotton-t-shirt"
