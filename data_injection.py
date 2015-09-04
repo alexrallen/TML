@@ -100,6 +100,12 @@ oc_product_description = ("INSERT INTO oc_product_description "
 
 data_oc_product_description = (id, 1, name, description, tag, metatitle, meta_description, meta_keyword)
 
+oc_product_to_store = ("INSERT INTO oc_product_to_store "
+                         "(product_id, store_id)"
+   "VALUES (%s, %s)")
+ 
+data_oc_product_to_store = (id, 0)
+
 data_oc_attrb_shirt = (id, 13, 1, (stype))
 data_oc_attrb_color = (id, 12, 1, (color))
 data_oc_attrb_design = (id, 14, 1, (desid))
@@ -109,6 +115,8 @@ cursor.execute(oc_attrb, data_oc_attrb_color)
 cursor.execute(oc_attrb, data_oc_attrb_shirt)
 cursor.execute(oc_attrb, data_oc_attrb_design)
 cursor.execute(oc_product_description, data_oc_product_description)
+
+cursor.execute(oc_product_to_store, data_oc_product_to_store)
 
 #Add Sizes
 
