@@ -2,15 +2,22 @@ import MySQLdb
 
 db = MySQLdb.connect("localhost","root","", "opencart" )
 
-#need to define these variables....
-stype = "gildan-ultra-cotton-t-shirt"
-color = "Black"
+data = open('database.txt', 'r')
+vertical = data.readline() #vertical placement of design on sample image (int)
+color = data.readline() #color shirt that design is to be printed on
+name = data.readline() #name of product for storefront
+price = data.readline() #price of product in store (int)
+description = data.readline() #description for storefront 
+size = data.readline() #width and height of image (int)
+stype = "gildan-ultra-cotton-t-shirt" #this will always be the same, constant
+
+designidtext = open('designid.txt', 'r')
+desid = designidtext.readline()
 desid = "55a03015c4bdad6330c430c1"
 
-meta_description = "meta_description" 
+meta_description = "product" 
 metatitle = "product"
 meta_keyword = "product"
-description = "product description"
 tag = "product"
 
 #with open('data.txt') as f:
