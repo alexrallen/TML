@@ -6,6 +6,7 @@ data = open('database.txt', 'r')
 vertical = data.readline() #vertical placement of design on sample image (int)
 color = data.readline() #color shirt that design is to be printed on
 name = data.readline() #name of product for storefront
+name = name.rstrip()
 price = data.readline() #price of product in store (int)
 description = data.readline() #description for storefront 
 size = data.readline() #width and height of image (int)
@@ -13,29 +14,18 @@ stype = "gildan-ultra-cotton-t-shirt" #this will always be the same, constant
 
 designidtext = open('designid.txt', 'r')
 desid = designidtext.readline()
-desid = "55a03015c4bdad6330c430c1"
 
 meta_description = "product" 
 metatitle = "product"
 meta_keyword = "product"
 tag = "product"
 
-#with open('data.txt') as f:
- #   dat = []
-  #  while True:
-   #     line = list(islice(f, 10)) 
-    #    if line:                     
-     #       lines.append(line)  
-      #  else:
-       #     break
-   # print lines    
-
 NULL = "" #shouldn't this be obvious? 
 
-name = "1cOOl Product"
-name = name.replace(" ", "")
-name = name.lower()
-image = "catalog/" + str(name) + str(".png")
+placeholder = name
+placeholder = placeholder.replace(" ", "")
+placeholder = placeholder.lower()
+image = str("catalog/") + str(placeholder) + str(".png")
 
 data = open('id.txt', 'r')
 id = data.readline()
@@ -50,10 +40,8 @@ price = 19
 price = str(price)
 if len(price) == 5:
     price = price + str('00')
-    print price 
 if len(price) == 2:
     price = price + str('.0000')
-    print price 
 price = str(price) 
 
 cursor = db.cursor()
@@ -125,6 +113,4 @@ cursor.execute(oc_product_description, data_oc_product_description)
 
 cursor.execute(oc_product_to_store, data_oc_product_to_store)
 
-#Add Sizes
-
-
+#add sizes 
