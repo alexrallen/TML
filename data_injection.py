@@ -113,4 +113,21 @@ cursor.execute(oc_product_description, data_oc_product_description)
 
 cursor.execute(oc_product_to_store, data_oc_product_to_store)
 
+product_option = "INSERT INTO `opencart`.`oc_product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES ('0', %s, '11', '', '1')";
+
+cursor.execute(product_option, (id))
+
+row_id = cursor.lastrowid
+
+option_value_1 = "INSERT INTO `opencart`.`oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES ('0', %s, %s, '11', %s, '1000', '1', '0.0000', '+', '0', '+', '0.00000000', '+');"
+
+cursor.execute(option_value_1, (row_id, id, 50))
+cursor.execute(option_value_1, (row_id, id, 49))
+cursor.execute(option_value_1, (row_id, id, 48))
+cursor.execute(option_value_1, (row_id, id, 47))
+cursor.execute(option_value_1, (row_id, id, 46))
+cursor.execute(option_value_1, (row_id, id, 51))
+cursor.execute(option_value_1, (row_id, id, 52))
+cursor.execute(option_value_1, (row_id, id, 53))
+
 #add sizes 
